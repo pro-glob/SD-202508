@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title updated to August 2025 -->
+    <title>Salty Duck Restaurant - August 2025 Financial Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-value {
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        .kpi-label {
+            font-size: 1rem;
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: #90a4ae;
+            text-align: center;
+        }
+        .flow-box {
+            border: 2px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#0B2D48]">Salty Duck Restaurant</h1>
+            <!-- Text updated to August 2025 -->
+            <p class="text-xl text-[#4A6572] mt-2">Financial Health Check: August 2025</p>
+        </header>
+
+        <!-- KPI Section Updated for August -->
+        <section id="kpis" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105">
+                <p class="kpi-label text-gray-500 font-semibold">August Operating Revenue</p>
+                <!-- Data from Page 9: Aug Op Revenue = 3,830 -->
+                <p class="kpi-value font-bold text-[#E74C3C]">KD 3,830</p>
+                <!-- Data from Page 9: July Op Revenue = 4,770. ((3830-4770)/4770) = -19.7% -->
+                <p class="text-md text-red-500 font-semibold">▼ 19.7% from July</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105">
+                <p class="kpi-label text-gray-500 font-semibold">August Gross Profit Margin</p>
+                <!-- Data from Page 9: Aug GPM = 83% -->
+                <p class="kpi-value font-bold text-[#3498DB]">83%</p>
+                <!-- Data from Page 9: July GPM = 69% -->
+                <p class="text-md text-gray-600">Up from 69% in July</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105">
+                <p class="kpi-label text-gray-500 font-semibold">Net Loss for August</p>
+                <!-- Data from Page 9: Aug Net Profit = -670 -->
+                <p class="kpi-value font-bold text-[#E74C3C]">(KD 670)</p>
+                <!-- Data from Page 9: July Net Profit = -586. ((670-586)/586) = 14.3% deeper loss -->
+                <p class="text-md text-red-500 font-semibold">▲ 14.3% deeper loss than July</p>
+            </div>
+        </section>
+
+        <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Performance Summary Updated for August -->
+            <div class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2 text-[#0B2D48]">August Performance Summary</h2>
+                <p class="text-gray-600 mb-4">This chart breaks down the key financial movements for August. While the gross profit margin was strong, a dip in revenue led to a net loss for the month.</p>
+                <div class="chart-container h-96 max-h-[450px]">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Revenue Sources Updated for August -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2 text-[#0B2D48]">Where Did August's Money Come From?</h2>
+                <p class="text-gray-600 mb-4">Knet and credit card sales were the primary revenue drivers, accounting for over 93% of all sales in August.</p>
+                <div class="chart-container">
+                    <canvas id="revenueSourceChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Expenses Updated for August -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2 text-[#0B2D48]">What Did We Spend On In August?</h2>
+                <p class="text-gray-600 mb-4">Salaries, rent, and food purchases were the largest expenses. These core costs are the primary focus for management.</p>
+                <div class="chart-container">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Trend Charts Updated to include August -->
+            <div class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2 text-[#0B2D48]">The Bigger Picture: Year-to-Date Trends</h2>
+                <p class="text-gray-600 mb-4">August continued a two-month downward trend in revenue, leading to a deepening net loss. This highlights the challenge of maintaining sales volume, despite strong margins when sales are made.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="chart-container">
+                        <canvas id="revenueTrendChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="profitTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cash Flow Updated for August -->
+            <div class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6">
+                 <h2 class="text-2xl font-bold mb-2 text-[#0B2D48]">Cash is King: The August Cash Flow Story</h2>
+                 <p class="text-gray-600 mb-6">Despite the net loss, the restaurant's cash balance *increased* in August, likely due to collecting on previous sales (receivables) or other balance sheet movements.</p>
+                 <div class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4">
+                    <!-- Data from Page 4: July 31 Cash = 2,655 -->
+                    <div class="flow-box text-center p-4 rounded-lg w-full md:w-1/4">
+                        <p class="text-gray-500 font-semibold">Starting Cash (Jul 31)</p>
+                        <p class="text-2xl font-bold">KD 2,655</p>
+                    </div>
+                    <div class="flow-arrow md:rotate-0 rotate-90">➔</div>
+                    <!-- Data from Page 4: Period Movement = 865 -->
+                    <div class="flow-box text-center p-4 rounded-lg w-full md:w-2/4 bg-gray-50">
+                         <div>
+                            <p class="text-green-600 font-semibold">Net Cash Movement in August</p>
+                            <p class="text-lg font-bold text-green-600">+ KD 865</p>
+                         </div>
+                    </div>
+                    <div class="flow-arrow md:rotate-0 rotate-90">➔</div>
+                    <!-- Data from Page 4: Aug 31 Cash = 3,520 -->
+                    <div class="flow-box text-center p-4 rounded-lg w-full md:w-1/4">
+                        <p class="text-gray-500 font-semibold">Ending Cash (Aug 31)</p>
+                        <p class="text-2xl font-bold">KD 3,520</p>
+                    </div>
+                 </div>
+            </div>
+            
+            <!-- Recommendation Section Updated (data from Page 11) -->
+            <div class="lg:col-span-2 bg-[#0B2D48] text-white rounded-xl shadow-lg p-8 text-center">
+                <h2 class="text-3xl font-bold mb-4">The Path to Profitability</h2>
+                <p class="text-lg text-gray-300 mb-6">The report outlines a clear and achievable path to turn a profit. The key is to maintain sales momentum while keeping a close watch on expenses.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white/10 p-4 rounded-lg">
+                        <p class="text-gray-300">Target Daily Sales</p>
+                        <p class="text-3xl font-bold text-white">KD 350</p>
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-lg">
+                        <p class="text-gray-300">Projected G&A Expenses</p>
+                        <p class="text-3xl font-bold text-white">KD 3,415</p>
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-lg">
+                        <p class="text-gray-300">Projected Monthly Profit</p>
+                        <p class="text-3xl font-bold text-[#2ECC71]">KD 793</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Power of One Updated for August -->
+            <div class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2 text-[#0B2D48]">The Power of One: Small Changes, Big Impact</h2>
+                <p class="text-gray-600 mb-4">This analysis shows the direct impact that a mere 1% improvement in key areas would have had on August's bottom line. Small gains in revenue and fixed costs would have provided the most significant boost to profit.</p>
+                <div class="chart-container h-96 max-h-[450px]">
+                    <canvas id="powerOfOneChart"></canvas>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // --- CHART.JS SCRIPT ---
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback,
+                    },
+                    backgroundColor: '#0B2D48',
+                    titleFont: { size: 14, weight: 'bold' },
+                    bodyFont: { size: 12 },
+                    padding: 10,
+                    cornerRadius: 5,
+                    displayColors: true,
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return 'KD ' + value.toLocaleString();
+                        }
+                    }
+                }
+            }
+        };
+
+        const wrapLabel = (label) => {
+            const maxLength = 16;
+            if (typeof label !== 'string' || label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines.filter(line => line.length > 0);
+        };
+        
+        // Performance Chart Data (Updated for August)
+        // Data from Page 9: Revenue 3830, Gross Profit 3161, G&A 3419, Net Loss -670
+        const performanceLabels = ['Operating Revenue', 'Gross Profit', ['General &', 'Admin Expenses'], 'Net Loss'].map(wrapLabel);
+        new Chart(document.getElementById('performanceChart'), {
+            type: 'bar',
+            data: {
+                labels: performanceLabels,
+                datasets: [{
+                    label: 'August 2025 Movement',
+                    data: [3830, 3161, 3419, -670],
+                    backgroundColor: [
+                        'rgba(46, 204, 113, 0.7)',
+                        'rgba(52, 152, 219, 0.7)',
+                        'rgba(241, 196, 15, 0.7)',
+                        'rgba(231, 76, 60, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(46, 204, 113, 1)',
+                        'rgba(52, 152, 219, 1)',
+                        'rgba(241, 196, 15, 1)',
+                        'rgba(231, 76, 60, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {...commonChartOptions, plugins: { ...commonChartOptions.plugins, legend: { display: false }}}
+        });
+        
+        // Revenue Source Chart Data (Updated for August)
+        // Data from Page 8 (Period Movement): Knet 2068, Credit Card 1517, Cash 245, Other 0
+        new Chart(document.getElementById('revenueSourceChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Knet Sales', 'Credit Card Sales', 'Cash Sales'],
+                datasets: [{
+                    data: [2068, 1517, 245],
+                    backgroundColor: ['#3498DB', '#2ECC71', '#F1C40F'],
+                    hoverOffset: 4
+                }]
+            },
+            options: { ...commonChartOptions, scales: {} }
+        });
+
+        // Expense Chart Data (Updated for August)
+        // Data from Page 10 & 8: Salaries 1750, Rent 1200, Food 611, Leave/Indem 191, Cleaning 96, Other 182
+        const expenseLabels = ['Salaries & Wages', 'Rent', 'Food Purchases', 'Leave/Indemnity', 'Cleaning Tools', 'Other'].map(wrapLabel);
+        new Chart(document.getElementById('expenseChart'), {
+            type: 'bar',
+            data: {
+                labels: expenseLabels,
+                datasets: [{
+                    label: 'August Expenses (KD)',
+                    data: [1750, 1200, 611, 191, 96, 182],
+                    backgroundColor: ['#E74C3C', '#E67E22', '#F39C12', '#1ABC9C', '#3498DB', '#9B59B6'],
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: { ...commonChartOptions.plugins, legend: { display: false }},
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'KD ' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Trend Charts Data (Updated to include August)
+        // Data from Page 9
+        const trendLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
+        new Chart(document.getElementById('revenueTrendChart'), {
+            type: 'line',
+            data: {
+                labels: trendLabels,
+                datasets: [{
+                    label: 'Operating Revenue (KD)',
+                    data: [5783, 5401, 1361, 5701, 5979, 5127, 4770, 3830],
+                    borderColor: '#3498DB',
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {...commonChartOptions, plugins: { ...commonChartOptions.plugins, legend: { display: false } }, scales: { y: {...commonChartOptions.scales.y, title: { display: true, text: 'Revenue' }}}}
+        });
+
+        new Chart(document.getElementById('profitTrendChart'), {
+            type: 'line',
+            data: {
+                labels: trendLabels,
+                datasets: [{
+                    label: 'Net Profit/(Loss) (KD)',
+                    data: [422, 248, -3464, 11, 603, -320, -586, -670],
+                    borderColor: '#E74C3C',
+                    backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {...commonChartOptions, plugins: { ...commonChartOptions.plugins, legend: { display: false } }, scales: { y: {...commonChartOptions.scales.y, title: { display: true, text: 'Profit/(Loss)' }}}}
+        });
+
+        // Power of One Chart Data (Calculated for August)
+        // 1% Rev (GM 83%): 38.3 * 0.83 = 31.79
+        // 1% Var Cost: 669 * 0.01 = 6.69
+        // 1% Fixed Cost: 3419 * 0.01 = 34.19
+        const powerOfOneLabels = ['1% Revenue Increase', ['1% Decrease in', 'Variable Costs'], ['1% Decrease in', 'Fixed Costs']].map(wrapLabel);
+        new Chart(document.getElementById('powerOfOneChart'), {
+            type: 'bar',
+            data: {
+                labels: powerOfOneLabels,
+                datasets: [{
+                    label: 'Increase in Net Profit (KD)',
+                    data: [31.79, 6.69, 34.19],
+                    backgroundColor: [
+                        'rgba(46, 204, 113, 0.7)',
+                        'rgba(52, 152, 219, 0.7)',
+                        'rgba(241, 196, 15, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(46, 204, 113, 1)',
+                        'rgba(52, 152, 219, 1)',
+                        'rgba(241, 196, 15, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: "Impact of a 1% Improvement on August's Profit",
+                        padding: {
+                            bottom: 20
+                        },
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+            }
+        });
+    </script>
+</body>
+</html>
